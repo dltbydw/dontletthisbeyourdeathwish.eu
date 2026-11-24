@@ -1,0 +1,30 @@
+# Musik. Releases in the order they appear on the page.
+#
+#   title
+#   lang            optional, language of the title if not German, e.g. "en"
+#   cover           optional, square image file in static/ (upload it there first);
+#                   without one the page shows an empty dashed square
+#   cover_size      pixel width (= height) of the cover, required with cover
+#   released        optional, "YYYY-MM", shown as "Januar 2025"
+#   note            optional, shown instead of the release date
+#   note_lang       optional, language of the note if not German
+#   links           optional, a list of name and url, like below
+#   bandcamp_album  optional, the album's number on Bandcamp: shows a button that
+#                   loads Bandcamp's player only when clicked. The number is in the
+#                   embed code (Share/Embed on the album page, "album=...")
+
+- title: "in Aufnahme"
+  note: "stay tuned"
+  note_lang: "en"
+
+- title: "Alien Love Songs (DEMO)"
+  lang: "en"
+  cover: "demo-cover1.webp"
+  cover_size: 800
+  released: "2025-01"
+  bandcamp_album: 4064552867
+  links:
+    - name: "Bandcamp"
+      url: "https://dontletthisbeyourdeathwish.bandcamp.com/album/alien-love-songs-demo"
+    - name: "YouTube"
+      url: "https://youtu.be/_VrghhmgOMg"

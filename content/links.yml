@@ -1,0 +1,16 @@
+# Links in the footer, in this order.
+#
+#   name   shown text
+#   url    https://... or mailto:...
+
+- name: "Instagram"
+  url: "https://www.instagram.com/dontletthisbeyourdeathwish161"
+
+- name: "Bandcamp"
+  url: "https://dontletthisbeyourdeathwish.bandcamp.com"
+
+- name: "YouTube"
+  url: "https://www.youtube.com/@dltbydw"
+
+- name: "Booking"
+  url: "mailto:dltbydw@gmail.com"

@@ -1,0 +1,229 @@
+<!doctype html>
+{# this is the source template file to edit.
+   do not trust the comment below... #}
+<!-- this file was generated. do not edit! -->
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title lang="en">Don't let this be your Deathwish</title>
+    <meta
+      name="description"
+      content="Termine, Musik und Kontakt von Don't let this be your Deathwish."
+    />
+    <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
+    <link
+      rel="preload"
+      href="fonts/special-elite.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    {# every screen ends in the same section-nav: one section forward (↓) and one
+       back (↑), in a circle, so links ↓ leads to the top and the top's ↑ to links #}
+    <header class="hero" id="top">
+      <h1>
+        <img
+          src="Logo_weiss.webp"
+          width="1000"
+          height="1000"
+          lang="en"
+          alt="Don't let this be your Deathwish"
+        />
+      </h1>
+      <nav class="section-nav" aria-label="Abschnitte">
+        <a href="#band">band <span aria-hidden="true">↓</span></a>
+        <a href="#links">links <span aria-hidden="true">→</span></a>
+      </nav>
+    </header>
+
+    {# hidden until the script runs: without JavaScript the button would do nothing.
+       The label names the current look: "cold" without sepia, "cozy" with it.
+       No aria-pressed: the label already says the state, "cozy, pressed" would say it twice. #}
+    <button type="button" class="sepia-toggle" hidden>cold</button>
+
+    <main>
+      <section id="band">
+        <h2><a href="#band">Band</a></h2>
+        <div class="about">
+          <p>
+            Bei
+            <span class="bandname" lang="en"
+              ><span class="plain">Don't let this be your Deathwish</span
+              ><span class="cursed"
+                >Døn't let thïs be yøur Deå⸸hwïsh</span
+              ></span
+            >
+            treffen noisige, dissonante Gitarrenwände auf die
+            expressionistischen Schreie des Subjekts, das in der lärmenden
+            Verzweiflung seine Zerrissenheit artikuliert.
+          </p>
+          <p>
+            Die Kombination atmosphärischer Texturen und brutaler Klangkaskaden
+            zeichnet das Verhältnis von Hoffnungslosigkeit und Sehnsucht nicht
+            als ästhetischen Widerspruch, sondern als Einheit, die die Dialektik
+            moderner Existenz reflektiert.
+          </p>
+          <p class="motto" lang="en">Fuck Nazi Sympathy</p>
+        </div>
+        <nav class="section-nav" aria-label="Abschnitte">
+          <a href="#musik">musik <span aria-hidden="true">↓</span></a>
+          <a href="#top">start <span aria-hidden="true">↑</span></a>
+        </nav>
+      </section>
+
+      <section id="musik">
+        <h2><a href="#musik">Musik</a></h2>
+        <div class="releases">
+          {% for r in releases %}
+          <div class="release">
+            {% if r.cover %}
+            <img
+              class="cover"
+              src="{{ r.cover }}"
+              width="{{ r.cover_size }}"
+              height="{{ r.cover_size }}"
+              alt="Cover von {{ r.title }}"
+            />
+            {% else %}
+            <div class="cover tbd" aria-hidden="true"></div>
+            {% endif %}
+            <div>
+              <h3{% if r.lang %} lang="{{ r.lang }}"{% endif %}>{{ r.title }}</h3>
+              {% if r.note %}
+              <p class="note"{% if r.note_lang %} lang="{{ r.note_lang }}"{% endif %}>{{ r.note }}</p>
+              {% elif r.released %}
+              <p class="note"><time datetime="{{ r.released.iso }}">{{ r.released.label }}</time></p>
+              {% endif %}
+              {% if r.links %}
+              <div class="stream-links">
+                {% for l in r.links %}
+                <a href="{{ l.url }}">{{ l.name }}</a>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {# click to load: nothing goes to Bandcamp before the click (consent,
+                 see impressum.html#bandcamp). Hidden without JavaScript, like the
+                 sepia button; the Bandcamp link above still works. #}
+              {% if r.bandcamp_album %}
+              <div
+                class="bandcamp"
+                data-src="https://bandcamp.com/EmbeddedPlayer/album={{ r.bandcamp_album }}/size=small/bgcol=333333/linkcol=ffffff/artwork=none/transparent=true/"
+                data-title="Bandcamp-Player: {{ r.title }}"
+                hidden
+              >
+                <button type="button">Player laden</button>
+                <p>
+                  Lädt den Player von Bandcamp; dabei gehen Daten an Bandcamp.
+                  <a href="impressum.html#bandcamp">Datenschutz</a>
+                </p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <nav class="section-nav" aria-label="Abschnitte">
+          <a href="#termine">termine <span aria-hidden="true">↓</span></a>
+          <a href="#band">band <span aria-hidden="true">↑</span></a>
+        </nav>
+      </section>
+
+      <section id="termine">
+        <h2><a href="#termine">Termine</a></h2>
+        <ul class="shows">
+          {% for s in shows %}
+          <li{% if s.cancelled %} class="cancelled"{% endif %}>
+            <span><time datetime="{{ s.date.isoformat() }}">{{ s.label }}</time> · {{ s.city }} ·
+            {%- if s.url and not s.cancelled %} <a href="{{ s.url }}">{{ s.venue }}</a>
+            {%- else %} {{ s.venue }}
+            {%- endif %}</span>
+            {%- if s.cancelled %}<span>abgesagt</span>{% endif %}
+
+          </li>
+          {% endfor %}
+        </ul>
+        {# the script shows it when the list runs empty because all shows have passed #}
+        <p class="no-shows"{% if shows %} hidden{% endif %}>Zurzeit keine Termine.</p>
+        {# all shows are rendered into the list above, past or not: the build stays
+           independent of the day it runs on, so --check doesn't fail just because a
+           date has passed. The script moves past shows here; without JavaScript they
+           stay in the list above and this block stays hidden. #}
+        <details class="past" hidden>
+          <summary>Vergangene Termine</summary>
+          <ul class="shows"></ul>
+        </details>
+        <nav class="section-nav" aria-label="Abschnitte">
+          <a href="#links">links <span aria-hidden="true">↓</span></a>
+          <a href="#musik">musik <span aria-hidden="true">↑</span></a>
+        </nav>
+      </section>
+    </main>
+
+    <footer class="page-footer" id="links">
+      <h2><a href="#links">Links</a></h2>
+      <ul class="outlinks">
+        {% for l in links %}
+        <li><a href="{{ l.url }}">{{ l.name }}</a></li>
+        {% endfor %}
+      </ul>
+      <nav class="section-nav" aria-label="Abschnitte">
+        <a href="#top">start <span aria-hidden="true">←</span></a>
+        <a href="#termine">termine <span aria-hidden="true">↑</span></a>
+      </nav>
+      <p class="legal">
+        <a href="impressum.html">Impressum</a> ·
+        <a href="impressum.html#datenschutz">Datenschutz</a>
+      </p>
+    </footer>
+
+    {# Comments for the script live here: a Jinja comment inside script isn't
+       JavaScript and breaks the editor's highlighting, a JS comment would ship.
+
+       Past shows: today is taken in the band's time zone as YYYY-MM-DD, the format
+       of the datetime attributes (Swedish formats dates that way), so a plain string
+       comparison finds the past shows; a show stays upcoming on its own day.
+
+       Each past show moves as it is, with its venue link and "abgesagt" label, to
+       the top of the past list: the list above is sorted by date, so prepending
+       puts the newest past show first.
+
+       Bandcamp: the iframe is only created on click and replaces the button and
+       note; the consent lasts for this page load, nothing is stored. #}
+    <script>
+      const sepiaToggle = document.querySelector(".sepia-toggle");
+      sepiaToggle.hidden = false;
+      sepiaToggle.addEventListener("click", () => {
+        const on = document.documentElement.classList.toggle("sepia");
+        sepiaToggle.textContent = on ? "cozy" : "cold";
+      });
+
+      for (const box of document.querySelectorAll(".bandcamp")) {
+        box.hidden = false;
+        box.querySelector("button").addEventListener("click", () => {
+          const player = document.createElement("iframe");
+          player.src = box.dataset.src;
+          player.title = box.dataset.title;
+          box.replaceChildren(player);
+        });
+      }
+
+      const today = new Date().toLocaleDateString("sv-SE", {
+        timeZone: "Europe/Berlin",
+      });
+      const upcoming = document.querySelector("#termine > .shows");
+      const past = document.querySelector("#termine .past");
+      const pastList = past.querySelector(".shows");
+      for (const show of [...upcoming.children]) {
+        if (show.querySelector("time").getAttribute("datetime") < today) {
+          pastList.prepend(show);
+        }
+      }
+      past.hidden = pastList.children.length === 0;
+      document.querySelector(".no-shows").hidden = upcoming.children.length > 0;
+    </script>
+  </body>
+</html>

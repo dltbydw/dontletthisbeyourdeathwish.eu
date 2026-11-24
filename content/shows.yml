@@ -1,0 +1,83 @@
+# Termine. Any order; the page sorts them by date. Leave past shows in: the page
+# moves them under "Vergangene Termine" by itself once their date has passed.
+#
+# Copy a block (from "- date" down), change the values, commit.
+# The site rebuilds in about a minute.
+#
+#   date       e.g. 2026-12-05 (no quotes)
+#   city       "Rosenheim"
+#   venue      "asta Kneipe"
+#   url        optional, the event page; the venue name links to it
+#   cancelled  optional, true strikes the show through and shows "abgesagt"
+
+- date: 2027-04-04
+  city: "Rosenheim"
+  venue: "asta Kneipe"
+  url: "https://astakneipe.de"
+
+- date: 2026-12-15
+  city: "Augsburg"
+  venue: "Grandhotel Cosmopolis"
+
+- date: 2026-11-07
+  city: "Budweis"
+  venue: "VÝMĚNÍK1"
+  cancelled: true
+
+- date: 2026-11-06
+  city: "Plauen"
+  venue: "Projekt Schuldenberg"
+
+- date: 2026-09-25
+  city: "München"
+  venue: "Kafe Kult"
+  url: "https://www.kafekult.de/wordpress/event/nekrodeus-dont-let-this-be-your-deathwish-drone-strike/"
+
+- date: 2026-05-13
+  city: "München"
+  venue: "Kafe Marat"
+  url: "https://kafemarat.net/event/mittwochskafe-i-saw-daylight-tba/"
+
+- date: 2026-04-10
+  city: "Rosenheim"
+  venue: "Blackbox"
+
+- date: 2026-02-27
+  city: "Wien"
+  venue: "Wo: ask a Punk"
+
+- date: 2026-02-14
+  city: "Rosenheim"
+  venue: "Vetternwirtschaft"
+  url: "https://www.vfbk.net"
+
+- date: 2026-01-05
+  city: "Graz"
+  venue: "Music House"
+
+- date: 2025-07-17
+  city: "München"
+  venue: "Sunny Red"
+
+- date: 2025-05-17
+  city: "Innsbruck"
+  venue: "Reif für die Verkehrsinsel"
+
+- date: 2025-05-12
+  city: "Rosenheim"
+  venue: "unter der Brücke"
+
+- date: 2025-04-20
+  city: "Burghausen"
+  venue: "6. Burghauser Folternacht"
+  url: "https://lightningbird.de"
+
+- date: 2025-04-12
+  city: "Rosenheim"
+  venue: "Vetternwirtschaft"
+  url: "https://www.vfbk.net"
+
+- date: 2024-11-09
+  city: "Rosenheim"
+  venue: "asta Kneipe"
+  url: "https://astakneipe.de"

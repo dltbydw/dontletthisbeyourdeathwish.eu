@@ -1,0 +1,88 @@
+<!doctype html>
+<!-- this file was generated. do not edit! -->
+{# Impressum and Datenschutzerklärung in one page. Name and address come from
+   content/legal.toml. The Impressum and the hosting paragraph are placeholders
+   for now. The privacy text describes the site as it is: no cookies, no
+   tracking, third-party content only after a click. Adding anything else (an
+   embedded player, analytics) means extending the text. #}
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Impressum und Datenschutz</title>
+    <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
+    <link
+      rel="preload"
+      href="fonts/special-elite.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="imprint">
+    <main>
+      <h1>Impressum und Datenschutz</h1>
+
+      {# placeholder until the band decides whose name and postal address go
+         here (§ 5 DDG). Then add the "Angaben gemäß § 5 DDG" heading. #}
+      <h2 id="impressum">Impressum</h2>
+      <p>Folgt in Kürze.</p>
+      <p>E-Mail: <a href="mailto:{{ legal.email }}">{{ legal.email }}</a></p>
+
+      <h2 id="datenschutz">Datenschutz</h2>
+
+      <p>
+        Verantwortlich ist die Band <span lang="en">{{ legal.name }}</span>,
+        erreichbar unter <a href="mailto:{{ legal.email }}">{{ legal.email }}</a>.
+      </p>
+
+      <h3>Website</h3>
+      {# placeholder: the site moved from Hetzner to GitHub Pages (GitHub, Inc.,
+         USA), which logs visitors' IP addresses. Needs its own paragraph. #}
+      <p>
+        Die Seite wird über GitHub Pages ausgeliefert. Eine ausführliche
+        Beschreibung folgt in Kürze. Keine Cookies, kein Tracking; Inhalte von
+        Dritten nur nach Ihrem Klick, siehe Bandcamp-Player.
+      </p>
+
+      <h3 id="bandcamp">Bandcamp-Player</h3>
+      <p>
+        Der Player auf der Startseite wird erst geladen, wenn Sie auf
+        „Player laden“ klicken. Dann verbindet sich Ihr Browser mit Bandcamp
+        (Bandcamp, Inc., USA), das dabei Ihre IP-Adresse und Browserdaten
+        erhält, Cookies setzen und Daten in den USA verarbeiten kann.
+        Rechtsgrundlage ist Ihre Einwilligung durch den Klick (Art. 6 Abs. 1
+        lit. a DSGVO, § 25 Abs. 1 TDDDG); sie gilt nur, bis Sie die Seite neu
+        laden.
+      </p>
+
+      <h3>E-Mail</h3>
+      {# matches the address in [legal]: a Gmail account; another provider
+         means rewriting this paragraph #}
+      <p>
+        Wenn Sie uns schreiben, nutzen wir Ihre Angaben nur für die Antwort
+        (Art. 6 Abs. 1 lit. b und f DSGVO). Unser Postfach liegt bei Gmail
+        (Google Ireland Limited); Google kann Daten in den USA verarbeiten,
+        abgesichert durch das EU-US Data Privacy Framework.
+      </p>
+
+      <h3>Links</h3>
+      <p>
+        Links zu Instagram, Bandcamp, YouTube oder Ticketshops sind einfache
+        Links; erst nach dem Klick gilt der Datenschutz des jeweiligen Dienstes.
+      </p>
+
+      <h3>Ihre Rechte</h3>
+      <p>
+        Sie haben die Rechte aus Art. 15 bis 21 DSGVO, etwa auf Auskunft,
+        Löschung und Widerspruch, und können sich bei einer
+        Datenschutz-Aufsichtsbehörde beschweren. Eine E-Mail an uns genügt.
+      </p>
+
+      <p>Stand: November 2026</p>
+
+      <p class="back"><a href="./">start <span aria-hidden="true">←</span></a></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+# Impressum and Datenschutz (impressum.html).
+# The Impressum itself is a placeholder for now, see templates/impressum.html.j2.
+#
+#   name    the band, named as responsible in the Datenschutz text
+#   email   the band's address; the Datenschutz text says it is a Gmail account
+
+name: "Don't let this be your Deathwish"
+email: "dltbydw@gmail.com"
