@@ -10,14 +10,14 @@
 #   url        optional, the event page; the venue name links to it
 #   cancelled  optional, true strikes the show through and shows "abgesagt"
 
-- date: 2027-04-04
-  city: "Rosenheim"
-  venue: "asta Kneipe"
-  url: "https://astakneipe.de"
+# - date: 2027-04-04
+#   city: "Rosenheim"
+#   venue: "asta Kneipe"
+#   url: "https://astakneipe.de"
 
-# - date: 2026-12-15
-#  city: "Augsburg"
-#  venue: "Grandhotel Cosmopolis"
+- date: 2026-12-15
+  city: "Augsburg"
+  venue: "Grandhotel Cosmopolis"
 
 - date: 2026-11-07
   city: "Budweis"
