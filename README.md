@@ -33,3 +33,20 @@ Needs [uv](https://docs.astral.sh/uv/).
 ## Setup (once)
 
 Repository settings → Pages → Source: **GitHub Actions**.
+
+## Domain
+
+Repository settings → Pages → Custom domain holds `dontletthisbeyourdeathwish.eu`; GitHub issues the HTTPS certificate for it and for `www`.
+
+DNS records:
+
+| Hostname | Type | Value |
+|---|---|---|
+| `@` | A | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (one record each) |
+| `@` | AAAA | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` (one record each) |
+| `www` | CNAME | `dltbydw.github.io` |
+| `_github-pages-challenge-dltbydw` | TXT | value from account settings → Pages → Verified domains |
+
+Keep the TXT record: it keeps the domain verified for this account, so no one else can attach it to their GitHub Pages site.
+
+TTL: 28800 (8 hours) on the A, AAAA and CNAME records, the same value for all records of a type. A changed or wrong record can stay cached for that long. Before a planned change, lower the TTL to 300 at least 8 hours ahead, make the change, then raise it again.
